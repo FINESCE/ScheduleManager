@@ -1,0 +1,129 @@
+path {
+    stroke-width: 1;
+    fill: none;
+}
+
+path.linePlanned {
+    stroke: #0000ff;
+}
+
+path.areaPlanned {
+    fill: blue;
+    fill-opacity: 0.5;
+}
+
+.legendPlanned {
+    fill: blue;
+    fill-opacity: 0.5;
+}
+
+path.lineReached {
+    stroke: red;
+}
+
+path.areaReached {
+    fill: red;
+    fill-opacity: 0.5;
+}
+
+.legendReched {
+    fill: red;
+    fill-opacity: 0.5;
+}
+
+line {
+    stroke: grey;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+.grid .tick {
+    stroke: lightgrey;
+    opacity: 0.7;
+}
+
+.grid path {
+    stroke-width: 0;
+}
+
+rect.pane {
+    cursor: move;
+    fill: none;
+    pointer-events: all;
+}
+
+.ui-mobile .ui-page .ui-slider-input,
+.ui-mobile .ui-dialog .ui-slider-input {
+    display : none;
+    z-index: -1;
+}
+
+input.invalid {
+    background-color: #ff0000;
+}
+
+svg.statistic {
+    height: 500px;
+}
+
+div.statistic {
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+    .row { margin-right: 0; margin-left: 0; }
+}
+
+
+.affix {
+    width: inherit; /*helped keep the content the same size on fluid layouts*/
+    position: fixed;
+    top: 50px;  /*height of the nav*/
+}
+.affix-bottom {
+    width: inherit;
+    position: absolute;/*absolute;*/
+    top: auto;
+    bottom: 50px;  /*height of the footer*/
+}
+.affix-top {
+    width: inherit; /*helped keep the content the same size on fluid layouts*/
+    position: fixed;
+    top: 50px;  /*height of the nav*/
+    /* need this? */
+}
+
+.vpp-settingsdialog {
+    margin-right: 10px;
+}
+
+.vpp-panel-settings {
+    position: fixed;
+    right:0px;
+    top:50px;
+}
+
+.vpp-panel-login {
+    position: fixed;
+    margin-left: auto;
+	margin-right: auto;
+	left:0;
+	right:0;
+    top:100px;
+    width:50%;
+}
+
+.vpp-panel-personal {
+    position: fixed;
+    left: 0px;
+    bottom: 40px;
+    z-index: 1001;
+}

@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+version_name: FINESCEApi
+version_copyright: Copyright (c) 2013 QSC AG
+Build-Jdk: 1.7.0_45
+version_description: 
+Created-By: 1.7.0_65 (Oracle Corporation)
+version_version: 1.0.1
+

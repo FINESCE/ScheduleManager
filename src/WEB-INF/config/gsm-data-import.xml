@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:integration="http://www.springframework.org/schema/integration"
+       xmlns:file="http://www.springframework.org/schema/integration/file"
+       xmlns:int-xmpp="http://www.springframework.org/schema/integration/xmpp"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                  http://www.springframework.org/schema/beans/spring-beans.xsd
+                  http://www.springframework.org/schema/integration
+                  http://www.springframework.org/schema/integration/spring-integration.xsd
+                  http://www.springframework.org/schema/integration/file
+                  http://www.springframework.org/schema/integration/file/spring-integration-file.xsd
+                  http://www.springframework.org/schema/integration/xmpp
+                  http://www.springframework.org/schema/integration/xmpp/spring-integration-xmpp.xsd
+                  ">
+    <file:inbound-channel-adapter id="dataImportChannel"
+                                  directory="file:${vpp.data.root.folder}"
+                                  scanner="recursiveScanner"
+                                  filter="compositeFilter">
+        <integration:poller id="poller" fixed-delay="10000" max-messages-per-poll="50"/>
+    </file:inbound-channel-adapter>
+
+    <bean id="compositeFilter" class="org.springframework.integration.file.filters.CompositeFileListFilter">
+        <constructor-arg>
+            <list>
+<!--                 <bean class="org.springframework.integration.file.filters.RegexPatternFileListFilter"> -->
+<!--                     <constructor-arg value=".*csv$"/> -->
+<!--                 </bean> -->
+                <bean class="qsmart.java.library.util.spring.LastModifiedAcceptOnceFileListFilter"/>
+            </list>
+        </constructor-arg>
+    </bean>
+	
+<!-- 	<bean id="XMPPimporterThread" class="java.lang.Thread" init-method="start"> -->
+<!-- 	  <constructor-arg ref="XMPPRemoteImporter"/> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="importerThread" class="java.lang.Thread" init-method="start"> -->
+<!-- 	  <constructor-arg ref="RemoteImporter"/> -->
+<!-- 	</bean> -->
+
+    <integration:service-activator input-channel="dataImportChannel"
+                                   ref="dataHandler" output-channel="nullChannel"/>
+	
+    <bean id="recursiveScanner" class="org.springframework.integration.file.RecursiveLeafOnlyDirectoryScanner"/>
+
+</beans>

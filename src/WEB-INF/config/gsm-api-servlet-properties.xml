@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+					    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- Messages related beans -->
+    <bean id="messageSource"
+          class="qsmart.java.library.util.spring.VppReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+            	<value>file:/etc/vpp/vpp-api</value>
+                <value>/META-INF/maven/de.tarent.qsc.vpp/Virtual-Power-Plant
+                </value>
+                <value>/WEB-INF/config/gsm-api</value>
+            </list>
+        </property>
+
+        <property name="defaultEncoding" value="UTF-8" />
+        <property name="cacheSeconds" value="60" />
+    </bean>
+    
+<!--     <bean name="RemoteImporterMessageSourceSet"  class="org.springframework.beans.factory.config.MethodInvokingFactoryBean"> -->
+<!-- 	   	<property name="staticMethod" value="qsmart.java.applications.gsm.service.RemoteImporter.setMessageSource"/> -->
+<!-- 	   	<property name="arguments"> -->
+<!-- 	        <list> -->
+<!-- 	            <ref bean="messageSource"/> -->
+<!-- 	        </list> -->
+<!-- 	   	</property> -->
+<!-- 	</bean> -->
+<!-- 	<bean name="XMPPRemoteImporterMessageSourceSet" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean"> -->
+<!-- 	   	<property name="staticMethod" value="qsmart.java.library.xmppconnector.XMPPRemoteImporter.setMessageSource"/> -->
+<!-- 	   	<property name="arguments"> -->
+<!-- 	        <list> -->
+<!-- 	            <ref bean="messageSource"/> -->
+<!-- 	        </list> -->
+<!-- 	   	</property> -->
+<!-- 	</bean> -->
+</beans>

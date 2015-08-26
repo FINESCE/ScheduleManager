@@ -1,0 +1,6 @@
+Build-Jdk: 1.7.0_45
+version_copyright: Copyright (c) 2013 QSC AG
+version_description: 
+version_name: FINESCEApi
+version_version: 1.0.1
+
